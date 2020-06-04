@@ -9,6 +9,56 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MaxHeight="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="PaleGreen"/>
+        <TextBlock Name="Header" 
+                   FontFamily="Broadway" 
+                   FontSize="35" 
+                   Text="Überschrift" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"/>
+        <Button Name="Options" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Width="64" 
+                Height="64"
+                FontFamily="Segoe MDL2 Assets"
+                FontSize="40" 
+                Content="&#xE700;" 
+                Click="Options_Click" />
+        <Frame Name="GameFrame" 
+               Grid.Row="1" 
+               VerticalAlignment="Stretch" 
+               HorizontalAlignment="Stretch" 
+               Background="LightSteelBlue" 
+               Padding="0,0,0,0">
+            <GridView HorizontalAlignment="Center"
+                      VerticalAlignment="Top" 
+                      Background="Black" 
+                      Margin="16,16,16,0" 
+                      IsItemClickEnabled="True">
+                <GridView.ItemContainerStyle>
+                    <Style TargetType="GridViewItem">
+                        <Setter Property="Margin" Value="5,5,5,5"/>
+                    </Style>
+                </GridView.ItemContainerStyle>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
+                <Image Style="{StaticResource Card}"/>
 
+            </GridView>
+        </Frame>
     </Grid>
 </Page>

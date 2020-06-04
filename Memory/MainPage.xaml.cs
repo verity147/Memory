@@ -26,5 +26,10 @@ namespace Memory
         {
             this.InitializeComponent();
         }
+
+        private void Options_Click(object sender, RoutedEventArgs e)
+        {
+            Header.Text = "Hello World";
+        }
     }
 }
