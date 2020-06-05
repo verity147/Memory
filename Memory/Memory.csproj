@@ -119,9 +119,13 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Game.xaml.cs">
+      <DependentUpon>Game.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Card.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -149,24 +153,24 @@
     <Content Include="Assets\card17_s.png" />
     <Content Include="Assets\card18_l.png" />
     <Content Include="Assets\card18_s.png" />
-    <Content Include="Assets\card01_l.png" />
-    <Content Include="Assets\card01_s.png" />
-    <Content Include="Assets\card02_l.png" />
-    <Content Include="Assets\card02_s.png" />
-    <Content Include="Assets\card03_l.png" />
-    <Content Include="Assets\card03_s.png" />
-    <Content Include="Assets\card04_l.png" />
-    <Content Include="Assets\card04_s.png" />
-    <Content Include="Assets\card05_l.png" />
-    <Content Include="Assets\card05_s.png" />
-    <Content Include="Assets\card06_l.png" />
-    <Content Include="Assets\card06_s.png" />
-    <Content Include="Assets\card07_l.png" />
-    <Content Include="Assets\card07_s.png" />
-    <Content Include="Assets\card08_l.png" />
-    <Content Include="Assets\card08_s.png" />
-    <Content Include="Assets\card09_l.png" />
-    <Content Include="Assets\card09_s.png" />
+    <Content Include="Assets\card1_l.png" />
+    <Content Include="Assets\card1_s.png" />
+    <Content Include="Assets\card2_l.png" />
+    <Content Include="Assets\card2_s.png" />
+    <Content Include="Assets\card3_l.png" />
+    <Content Include="Assets\card3_s.png" />
+    <Content Include="Assets\card4_l.png" />
+    <Content Include="Assets\card4_s.png" />
+    <Content Include="Assets\card5_l.png" />
+    <Content Include="Assets\card5_s.png" />
+    <Content Include="Assets\card6_l.png" />
+    <Content Include="Assets\card6_s.png" />
+    <Content Include="Assets\card7_l.png" />
+    <Content Include="Assets\card7_s.png" />
+    <Content Include="Assets\card8_l.png" />
+    <Content Include="Assets\card8_s.png" />
+    <Content Include="Assets\card9_l.png" />
+    <Content Include="Assets\card9_s.png" />
     <Content Include="Assets\cardback_l.png" />
     <Content Include="Assets\cardback_s.png" />
     <Content Include="Properties\Default.rd.xml" />
@@ -183,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Game.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

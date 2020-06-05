@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="Memory.Game"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Memory"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Memory.Models"    
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <GridView ItemsSource="{x:Bind CardList}"
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      Background="Black" 
+                      Margin="16,16,16,0" 
+                      IsItemClickEnabled="True">
+        <GridView.ItemTemplate>
+            <DataTemplate x:DataType="data:Card">
+                <Image Source="{x:Bind ImagePath}"
+                               Style="{StaticResource Card}"/>
+            </DataTemplate>
+        </GridView.ItemTemplate>
+        <GridView.ItemContainerStyle>
+            <Style TargetType="GridViewItem">
+                <Setter Property="Margin" Value="5,5,5,5"/>
+            </Style>
+        </GridView.ItemContainerStyle>
+    </GridView>
+</Page>

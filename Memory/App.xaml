@@ -7,13 +7,10 @@
         <Style TargetType="Image" x:Key="Card">
             <Setter Property="Stretch" Value="None"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Source" Value="Assets/cardback_s.png"/>
             <Setter Property="Margin" Value="0,0,0,0"/>
         </Style>
-        <Style TargetType="VariableSizedWrapGrid" x:Key="CardRowPanel">
-            <Setter Property="Orientation" Value="Horizontal"/>
-            <Setter Property="Margin" Value="0,0,0,0"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style TargetType="GridViewItem" x:Key="cardGridViewItem">
+            <Setter Property="Margin" Value="5,5,5,5"/>
         </Style>
     </Application.Resources>
 </Application>

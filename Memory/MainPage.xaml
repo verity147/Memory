@@ -35,30 +35,7 @@
                HorizontalAlignment="Stretch" 
                Background="LightSteelBlue" 
                Padding="0,0,0,0">
-            <GridView HorizontalAlignment="Center"
-                      VerticalAlignment="Top" 
-                      Background="Black" 
-                      Margin="16,16,16,0" 
-                      IsItemClickEnabled="True">
-                <GridView.ItemContainerStyle>
-                    <Style TargetType="GridViewItem">
-                        <Setter Property="Margin" Value="5,5,5,5"/>
-                    </Style>
-                </GridView.ItemContainerStyle>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
-                <Image Style="{StaticResource Card}"/>
 
-            </GridView>
         </Frame>
     </Grid>
 </Page>
