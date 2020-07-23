@@ -20,26 +20,46 @@ namespace Memory
 {
     public sealed partial class Game : Page
     {
-        private int cardCount = 18;
-        public List<Card> CardList { get; set; }
+        private readonly int cardCount = 18;
+        private readonly string cardBack = "Assets/cardback_s.png";
+        public List<Card> CardList { get; set; } = new List<Card>();
 
-
-        //public Game()
-        //{
-        //    this.InitializeComponent();
-        //}
-
-        public void InitializeGame()
+        public Game()
         {
-            for (int i = 0; i < cardCount; i++)
+            WriteCardList();
+            ShuffleCardList();
+            this.InitializeComponent();
+        }
+
+        private void ShuffleCardList()
+        {
+            Random random = new Random();
+            CardList = CardList.OrderBy(item => random.Next()).ToList();
+        }
+
+        public void WriteCardList()
+        {
+            for (int i = 1; i < cardCount + 1; i++)
             {
-                string img = "Assets/card" + (i + 1).ToString() + "_s.png";
+                string img = "Assets/card" + i.ToString() + "_s.png";
                 Card card = new Card(i, img, false, false);
                 for (int j = 0; j < 2; j++) //need one entry for each card of a pair
                 {
                     CardList.Add(card);
                 }
             }
+        }
+
+        private void Card_Click(object sender, ItemClickEventArgs e)
+        {
+            Card clickedCard = e.ClickedItem as Card;
+            //clickedCard.ImagePath = "Assets/card" + (clickedCard.Id).ToString() + "_s.png";
+            clickedCard.Turned = !clickedCard.Turned;
+        }
+
+        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var thing = e.AddedItems;
         }
     }
 }

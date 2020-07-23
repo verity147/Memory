@@ -21,15 +21,13 @@ namespace Memory
     public sealed partial class MainPage : Page
     {
         private Game game;
+
         public MainPage()
         {
-            game = (Game)FindName("Game");
+            game = new Game();
             this.InitializeComponent();
-            game.InitializeGame();
-            game.InitializeComponent();
             GameFrame.Navigate(typeof(Game));
-        }
-
+        }        
 
         private void Options_Click(object sender, RoutedEventArgs e)
         {

@@ -14,12 +14,12 @@ namespace Memory.Models
         public bool Turned { get; set; } = false;
         public bool Solved { get; set; } = false; //use this to hide solved pairs when set to true
 
-        public Card(int id, string imageName, bool turned, bool solved)
+        public Card(int id, string imagePath, bool turned, bool solved)
         {
-            id = Id;
-            imageName = ImagePath;
-            turned = Turned;
-            solved = Solved;
+            Id = id;
+            ImagePath = imagePath;
+            Turned = turned;
+            Solved = solved;
         }
     }
 

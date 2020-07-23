@@ -10,15 +10,17 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <GridView ItemsSource="{x:Bind CardList}"
-                      HorizontalAlignment="Center" 
-                      VerticalAlignment="Top" 
-                      Background="Black" 
-                      Margin="16,16,16,0" 
-                      IsItemClickEnabled="True">
-        <GridView.ItemTemplate>
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Background="Black" 
+                Margin="16,16,16,0" 
+                SelectionMode="Single"
+                SelectionChanged="GridView_SelectionChanged"
+                IsItemClickEnabled="True" >
+        <GridView.ItemTemplate>        
             <DataTemplate x:DataType="data:Card">
                 <Image Source="{x:Bind ImagePath}"
-                               Style="{StaticResource Card}"/>
+                       Style="{StaticResource Card}"/>                
             </DataTemplate>
         </GridView.ItemTemplate>
         <GridView.ItemContainerStyle>
