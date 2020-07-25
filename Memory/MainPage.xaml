@@ -35,7 +35,6 @@
                HorizontalAlignment="Stretch" 
                Background="LightSteelBlue" 
                Padding="0,0,0,0">
-
         </Frame>
     </Grid>
 </Page>

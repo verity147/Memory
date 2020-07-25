@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Memory.Models;
 using Windows.UI.Xaml.Navigation;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -42,24 +43,29 @@ namespace Memory
             for (int i = 1; i < cardCount + 1; i++)
             {
                 string img = "Assets/card" + i.ToString() + "_s.png";
-                Card card = new Card(i, img, false, false);
                 for (int j = 0; j < 2; j++) //need one entry for each card of a pair
                 {
+                    Card card = new Card(j, i, img, false, false);
                     CardList.Add(card);
                 }
             }
         }
-
-        private void Card_Click(object sender, ItemClickEventArgs e)
+        private void Card_Button(object sender, RoutedEventArgs e)
         {
-            Card clickedCard = e.ClickedItem as Card;
-            //clickedCard.ImagePath = "Assets/card" + (clickedCard.Id).ToString() + "_s.png";
-            clickedCard.Turned = !clickedCard.Turned;
-        }
-
-        private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var thing = e.AddedItems;
+            Button button = sender as Button;
+            int clickedCardId = int.Parse(button.Name);
+            foreach (Card card in CardList)
+            {
+                if (clickedCardId == card.UniqueId && !card.Turned)
+                {
+                    card.Turned = true;
+                    Image face = button.FindName("Face") as Image;
+                    face.Visibility = Visibility.Visible;
+                    Image back = button.FindName("Back") as Image;
+                    back.Visibility = Visibility.Collapsed;
+                    return;
+                }
+            }
         }
     }
 }

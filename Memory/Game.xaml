@@ -15,12 +15,21 @@
                 Background="Black" 
                 Margin="16,16,16,0" 
                 SelectionMode="Single"
-                SelectionChanged="GridView_SelectionChanged"
                 IsItemClickEnabled="True" >
         <GridView.ItemTemplate>        
             <DataTemplate x:DataType="data:Card">
-                <Image Source="{x:Bind ImagePath}"
-                       Style="{StaticResource Card}"/>                
+                <Button Name="{x:Bind UniqueId}" 
+                        Click="Card_Button">
+                    <StackPanel Name="StackPanel">
+                        <Image Source="{x:Bind ImagePath}"
+                               Style="{StaticResource Card}" 
+                               Visibility="Collapsed"
+                               Name="Face"/>
+                        <Image Style="{StaticResource Card}" 
+                               Source="/Assets/cardback_s.png"
+                               Name="Back"/>                        
+                    </StackPanel>
+                </Button>
             </DataTemplate>
         </GridView.ItemTemplate>
         <GridView.ItemContainerStyle>
