@@ -8,18 +8,18 @@ namespace Memory.Models
 {
     public class Card
     {
-        public int PairId { get; set; }
-        public int UniqueId { get; set; }
+        public int UniqueId { get; set; } //absolutely unique Id
+        public int PairId { get; set; } //represents the image to identify pairings
 
         public string ImagePath { get; set; } = "cardback_s.png";
 
         public bool Turned { get; set; } = false;
         public bool Solved { get; set; } = false; //use this to hide solved pairs when set to true
 
-        public Card(int pairId, int uniqueId, string imagePath, bool turned, bool solved)
+        public Card(int uniqueId, int pairId, string imagePath, bool turned, bool solved)
         {
-            PairId = pairId;
             UniqueId = uniqueId;
+            PairId = pairId;
             ImagePath = imagePath;
             Turned = turned;
             Solved = solved;

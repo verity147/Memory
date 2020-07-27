@@ -8,30 +8,31 @@
     xmlns:data="using:Memory.Models"    
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <GridView ItemsSource="{x:Bind CardList}"
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Top" 
-                Background="Black" 
-                Margin="16,16,16,0" 
-                SelectionMode="Single"
-                IsItemClickEnabled="True" >
-        <GridView.ItemTemplate>        
-            <DataTemplate x:DataType="data:Card">
-                <Button Name="{x:Bind UniqueId}" 
-                        Click="Card_Button">
-                    <StackPanel Name="StackPanel">
-                        <Image Source="{x:Bind ImagePath}"
+    <Page.Resources>
+        <DataTemplate x:Key="ImageTemplate" 
+                      x:DataType="data:Card">
+            <Button Name="{x:Bind UniqueId}" 
+                    Click="Card_Button">
+                <StackPanel Name="StackPanel">
+                    <Image Source="{x:Bind ImagePath}"
                                Style="{StaticResource Card}" 
                                Visibility="Collapsed"
                                Name="Face"/>
-                        <Image Style="{StaticResource Card}" 
+                    <Image Style="{StaticResource Card}" 
                                Source="/Assets/cardback_s.png"
-                               Name="Back"/>                        
-                    </StackPanel>
-                </Button>
-            </DataTemplate>
-        </GridView.ItemTemplate>
+                               Name="Back"/>
+                </StackPanel>
+            </Button>
+        </DataTemplate>        
+    </Page.Resources>
+    <GridView Background="Gray" 
+              HorizontalAlignment="Center" 
+              IsItemClickEnabled="True" 
+              ItemsSource="{x:Bind CardList}" 
+              ItemTemplate="{StaticResource ImageTemplate}"
+              Margin="16,16,16,0" 
+              SelectionMode="Single"
+              VerticalAlignment="Top" >
         <GridView.ItemContainerStyle>
             <Style TargetType="GridViewItem">
                 <Setter Property="Margin" Value="5,5,5,5"/>
