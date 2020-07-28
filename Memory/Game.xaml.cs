@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 using Memory.Models;
 using Windows.UI.Xaml.Navigation;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -61,7 +62,7 @@ namespace Memory
 
         private void Card_Button(object sender, RoutedEventArgs e)
         {            
-            if (turnedCardsCount > 2)
+            if (turnedCardsCount >= 2)
             {
                 return; //give player feedback to only turn two cards at once?
             }
@@ -84,7 +85,7 @@ namespace Memory
             }
         }
 
-        private void CompareCards()
+        private async void CompareCards()
         {
             Debug.WriteLine("CompareCards");
             if (turnedCards[0].UniqueId != turnedCards[1].UniqueId && turnedCards[0].PairId == turnedCards[1].PairId)
@@ -93,17 +94,30 @@ namespace Memory
                 foreach (Button button in buttons)
                 {
                     button.IsEnabled = false;
+                    Image face = button.FindName("Face") as Image;
+                    face.Visibility = Visibility.Collapsed;
                 }
-                //show large image
+
+                await ShowLargeImage();
             }
             else
             {
+                await Task.Delay(2000);
                 for (int i = 0; i < buttons.Length; i++)
                 {
                     TurnCardBack(buttons[i], turnedCards[i]);
                 }
             }
             turnedCardsCount = 0;
+        }
+
+        private async Task ShowLargeImage()
+        {
+            Uri imgUri = new Uri("ms-appx:///Assets/card" + turnedCards[0].PairId.ToString() + "_l.png", UriKind.Absolute);
+            LargeImage.Source = new BitmapImage(imgUri);
+            LargeImage.Visibility = Visibility.Visible;
+            await Task.Delay(1000);
+            LargeImage.Visibility = Visibility.Collapsed;
         }
 
         private static void TurnCardVisible(Button button, Card card)

@@ -23,20 +23,25 @@
                                Name="Back"/>
                 </StackPanel>
             </Button>
-        </DataTemplate>        
+        </DataTemplate>   
     </Page.Resources>
-    <GridView Background="Gray" 
-              HorizontalAlignment="Center" 
-              IsItemClickEnabled="True" 
-              ItemsSource="{x:Bind CardList}" 
-              ItemTemplate="{StaticResource ImageTemplate}"
-              Margin="16,16,16,0" 
-              SelectionMode="Single"
-              VerticalAlignment="Top" >
-        <GridView.ItemContainerStyle>
-            <Style TargetType="GridViewItem">
-                <Setter Property="Margin" Value="5,5,5,5"/>
-            </Style>
-        </GridView.ItemContainerStyle>
-    </GridView>
+    
+    <Grid>
+        <GridView Background="Gray" 
+                  HorizontalAlignment="Center" 
+                  IsItemClickEnabled="True" 
+                  ItemsSource="{x:Bind CardList}" 
+                  ItemTemplate="{StaticResource ImageTemplate}"
+                  Margin="16,16,16,0" 
+                  SelectionMode="Single"
+                  VerticalAlignment="Top" >
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Margin" Value="5,5,5,5"/>
+                </Style>
+            </GridView.ItemContainerStyle>
+        </GridView>
+        <Image Name="LargeImage"/>
+    </Grid>
 </Page>
+    
