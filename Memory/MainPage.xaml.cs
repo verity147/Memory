@@ -31,7 +31,7 @@ namespace Memory
 
         private void Options_Click(object sender, RoutedEventArgs e)
         {
-            Header.Text = "Hello World";
+            SplitviewMenu.IsPaneOpen = !SplitviewMenu.IsPaneOpen;
         }
     }
 }

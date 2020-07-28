@@ -94,6 +94,7 @@ namespace Memory
                 foreach (Button button in buttons)
                 {
                     button.IsEnabled = false;
+                    button.Opacity = 0;
                     Image face = button.FindName("Face") as Image;
                     face.Visibility = Visibility.Collapsed;
                 }

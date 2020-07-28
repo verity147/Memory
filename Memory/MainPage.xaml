@@ -13,28 +13,126 @@
             <RowDefinition Height="Auto" MaxHeight="100"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Background="PaleGreen"/>
-        <TextBlock Name="Header" 
-                   FontFamily="Broadway" 
-                   FontSize="35" 
-                   Text="Überschrift" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Center"/>
-        <Button Name="Options" 
-                HorizontalAlignment="Left" 
-                VerticalAlignment="Top" 
-                Width="64" 
-                Height="64"
-                FontFamily="Segoe MDL2 Assets"
-                FontSize="40" 
-                Content="&#xE700;" 
-                Click="Options_Click" />
-        <Frame Name="GameFrame" 
-               Grid.Row="1" 
-               VerticalAlignment="Stretch" 
-               HorizontalAlignment="Stretch" 
-               Background="LightSteelBlue" 
-               Padding="0,0,0,0">
-        </Frame>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <RelativePanel Background="PaleGreen">
+            <Button Name="Options" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Width="64" 
+                    Height="64"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="40" 
+                    Content="&#xE700;" 
+                    Click="Options_Click" 
+                    RelativePanel.AlignLeftWithPanel="True" />
+            <TextBlock FontFamily="Arial" 
+                       FontSize="35" 
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center" 
+                       Name="Header" 
+                       Text="Überschrift" 
+                       VerticalAlignment="Center" 
+                       RelativePanel.AlignHorizontalCenterWithPanel="True" 
+                       RelativePanel.AlignVerticalCenterWithPanel="True" />
+            <TextBlock Name="Attempts" 
+                       Text="Versuche: " 
+                       FontFamily="Arial" 
+                       FontSize="35" 
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Center" 
+                       RelativePanel.AlignVerticalCenterWithPanel="True" 
+                       RelativePanel.LeftOf="Spacer"/>
+            <Rectangle Name="Spacer" 
+                       Width="40" 
+                       RelativePanel.AlignRightWithPanel="True" />
+        </RelativePanel>
+        <SplitView Name="SplitviewMenu" 
+                   Grid.Row="1"
+                   CompactPaneLength="64" 
+                   IsPaneOpen="False" 
+                   DisplayMode="Overlay"
+                   OpenPaneLength="260" 
+                   HorizontalAlignment="Left" VerticalAlignment="Stretch">
+            <SplitView.Pane>
+                <Grid Margin="10,40,10,40" 
+                        VerticalAlignment="Stretch">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Button Name="RestartButton" 
+                            Grid.Row="0"
+                            HorizontalAlignment="Stretch" 
+                            Margin="0,0,0,40" 
+                            MinHeight="48"
+                            Content="Neues Spiel" 
+                            FontFamily="Arial" />
+                    <TextBlock Name="Volumetext" 
+                                Grid.Row="1"
+                                Text="Musik" 
+                                Margin="0,0,0,10" 
+                                FontFamily="Arial" 
+                                FontSize="18" 
+                                HorizontalAlignment="Center"/>
+                    <Slider Name="VolumeSlider" 
+                            Grid.Row="2"
+                            HorizontalAlignment="Stretch" 
+                            Margin="0,0,0,40"/>
+                    <TextBlock Name="CreditsHeader" 
+                                Grid.Row="3"
+                                Margin="0,0,0,10" 
+                                Text="Über das Spiel" 
+                                FontFamily="Arial Black" 
+                                FontSize="22" 
+                                HorizontalAlignment="Center" 
+                                FontWeight="Bold" 
+                               VerticalAlignment="Bottom"/>
+                    <RichTextBlock Name="Credits" 
+                                    Grid.Row="4"
+                                    HorizontalAlignment="Stretch" 
+                                    Margin="0,0,0,40" 
+                                    FontFamily="Arial" 
+                                    FontSize="18">
+                        <Paragraph>
+                            <LineBreak/>
+                            Programmierung:
+                            <LineBreak/>
+                            Vera Schöniger
+                            <LineBreak/>
+                            <LineBreak/>
+                            Bilder:
+                            <LineBreak/>
+                            Elfi Schöniger
+                            <LineBreak/>
+                            <LineBreak/>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                            <Hyperlink NavigateUri="https://edition-schoene-buecher.de/">Website</Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
+                    <Button Name="QuitButton" 
+                            Grid.Row="5" 
+                            HorizontalAlignment="Stretch" 
+                            MinHeight="48"
+                            Content="Spiel beenden" 
+                            FontFamily="Arial" 
+                            VerticalAlignment="Bottom"/>
+                </Grid>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame Name="GameFrame" 
+                       Grid.Row="1" 
+                       VerticalAlignment="Stretch" 
+                       HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                       Background="LightSteelBlue" 
+                       Padding="0,0,0,0">   
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
     </Grid>
 </Page>

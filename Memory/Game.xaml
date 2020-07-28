@@ -12,36 +12,37 @@
         <DataTemplate x:Key="ImageTemplate" 
                       x:DataType="data:Card">
             <Button Name="{x:Bind UniqueId}" 
-                    Click="Card_Button">
+                    Click="Card_Button"
+                    MinHeight="270" 
+                    MinWidth="200" AllowFocusWhenDisabled="False">
                 <StackPanel Name="StackPanel">
                     <Image Source="{x:Bind ImagePath}"
-                               Style="{StaticResource Card}" 
-                               Visibility="Collapsed"
-                               Name="Face"/>
+                            Style="{StaticResource Card}" 
+                            Visibility="Collapsed"
+                            Name="Face"/>
                     <Image Style="{StaticResource Card}" 
-                               Source="/Assets/cardback_s.png"
-                               Name="Back"/>
+                            Source="/Assets/cardback_s.png"
+                            Name="Back"/>
                 </StackPanel>
             </Button>
-        </DataTemplate>   
+        </DataTemplate>
     </Page.Resources>
-    
-    <Grid>
+
+    <Grid Margin="64,32,64,0" HorizontalAlignment="Stretch" >
         <GridView Background="Gray" 
-                  HorizontalAlignment="Center" 
-                  IsItemClickEnabled="True" 
-                  ItemsSource="{x:Bind CardList}" 
-                  ItemTemplate="{StaticResource ImageTemplate}"
-                  Margin="16,16,16,0" 
-                  SelectionMode="Single"
-                  VerticalAlignment="Top" >
+                IsItemClickEnabled="True" 
+                ItemsSource="{x:Bind CardList}" 
+                ItemTemplate="{StaticResource ImageTemplate}"
+                SelectionMode="Single" 
+                HorizontalContentAlignment="Center"
+                VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="0,0,0,0" HorizontalAlignment="Stretch" >
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="5,5,5,5"/>
                 </Style>
             </GridView.ItemContainerStyle>
         </GridView>
-        <Image Name="LargeImage"/>
+        <Image Name="LargeImage" Grid.ColumnSpan="3" Margin="0,0,0,0"/>
     </Grid>
 </Page>
     
