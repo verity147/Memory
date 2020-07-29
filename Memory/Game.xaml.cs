@@ -25,16 +25,18 @@ namespace Memory
     {
         private readonly int cardCount = 18;
         private int turnedCardsCount = 0;
+        private int solvedPairs = 0;
+        private int attempts = 0;
         private Card[] turnedCards = { null, null };
         private Card card;
         private Button[] buttons = { null, null };
-        private readonly string cardBack = "Assets/cardback_s.png";
         public List<Card> CardList { get; set; } = new List<Card>();
 
         public Game()
         {
             WriteCardList();
-            //ShuffleCardList();
+            ShuffleCardList();
+
             this.InitializeComponent();
         }
 
@@ -49,7 +51,6 @@ namespace Memory
             int uniqueIdCounter = 0;
             for (int i = 1; i < cardCount + 1; i++)
             {
-                //string img = cardBack;
                 string img = "Assets/card" + i.ToString() + "_s.png";
                 for (int j = 0; j < 2; j++) //need one entry for each card of a pair
                 {
@@ -87,10 +88,10 @@ namespace Memory
 
         private async void CompareCards()
         {
-            Debug.WriteLine("CompareCards");
+            Frame contentFrame = Window.Current.Content as Frame;
+            MainPage mainPage = contentFrame.Content as MainPage;
             if (turnedCards[0].UniqueId != turnedCards[1].UniqueId && turnedCards[0].PairId == turnedCards[1].PairId)
             {
-                Debug.WriteLine("correct pair ");
                 foreach (Button button in buttons)
                 {
                     button.IsEnabled = false;
@@ -98,8 +99,14 @@ namespace Memory
                     Image face = button.FindName("Face") as Image;
                     face.Visibility = Visibility.Collapsed;
                 }
+                solvedPairs++;
 
                 await ShowLargeImage();
+                if (solvedPairs == cardCount)
+                {
+                    Frame frame = mainPage.FindName("GameFrame") as Frame;
+                    frame.Navigate(typeof (Congratulations));
+                }
             }
             else
             {
@@ -110,6 +117,8 @@ namespace Memory
                 }
             }
             turnedCardsCount = 0;
+            attempts++;
+            mainPage.Attempts.Text = "Versuche: " + attempts.ToString();
         }
 
         private async Task ShowLargeImage()
@@ -117,7 +126,7 @@ namespace Memory
             Uri imgUri = new Uri("ms-appx:///Assets/card" + turnedCards[0].PairId.ToString() + "_l.png", UriKind.Absolute);
             LargeImage.Source = new BitmapImage(imgUri);
             LargeImage.Visibility = Visibility.Visible;
-            await Task.Delay(1000);
+            await Task.Delay(1500);
             LargeImage.Visibility = Visibility.Collapsed;
         }
 

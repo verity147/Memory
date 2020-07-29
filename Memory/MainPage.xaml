@@ -16,6 +16,9 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <MediaElement Name="MusicPlayer"
+                      Source="Assets/Music.wav" 
+                      IsLooping="True"/>
         <RelativePanel Background="PaleGreen">
             <Button Name="Options" 
                     HorizontalAlignment="Left" 
@@ -28,16 +31,17 @@
                     Click="Options_Click" 
                     RelativePanel.AlignLeftWithPanel="True" />
             <TextBlock FontFamily="Arial" 
+                       Name="Header" 
                        FontSize="35" 
                        FontWeight="Bold"
                        HorizontalAlignment="Center" 
-                       Name="Header" 
                        Text="Überschrift" 
                        VerticalAlignment="Center" 
                        RelativePanel.AlignHorizontalCenterWithPanel="True" 
                        RelativePanel.AlignVerticalCenterWithPanel="True" />
-            <TextBlock Name="Attempts" 
-                       Text="Versuche: " 
+            <TextBlock x:Name="Attempts" 
+                       Text="Versuche: 0" 
+                       x:FieldModifier="public"
                        FontFamily="Arial" 
                        FontSize="35" 
                        HorizontalAlignment="Right" 
@@ -54,7 +58,8 @@
                    IsPaneOpen="False" 
                    DisplayMode="Overlay"
                    OpenPaneLength="260" 
-                   HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch">
             <SplitView.Pane>
                 <Grid Margin="10,40,10,40" 
                         VerticalAlignment="Stretch">
@@ -70,9 +75,9 @@
                             Grid.Row="0"
                             HorizontalAlignment="Stretch" 
                             Margin="0,0,0,40" 
-                            MinHeight="48"
                             Content="Neues Spiel" 
-                            FontFamily="Arial" />
+                            Style="{StaticResource Button}" 
+                            Click="RestartButton_Click" />
                     <TextBlock Name="Volumetext" 
                                 Grid.Row="1"
                                 Text="Musik" 
@@ -81,9 +86,12 @@
                                 FontSize="18" 
                                 HorizontalAlignment="Center"/>
                     <Slider Name="VolumeSlider" 
+                            ValueChanged="VolumeSlider_ValueChanged"
+                            Value="0.5"
                             Grid.Row="2"
                             HorizontalAlignment="Stretch" 
-                            Margin="0,0,0,40"/>
+                            Margin="0,0,0,40" 
+                            Maximum="1" StepFrequency="0.05"/>
                     <TextBlock Name="CreditsHeader" 
                                 Grid.Row="3"
                                 Margin="0,0,0,10" 
@@ -118,17 +126,17 @@
                     <Button Name="QuitButton" 
                             Grid.Row="5" 
                             HorizontalAlignment="Stretch" 
-                            MinHeight="48"
                             Content="Spiel beenden" 
-                            FontFamily="Arial" 
-                            VerticalAlignment="Bottom"/>
+                            Style="{StaticResource Button}" 
+                            VerticalAlignment="Bottom" 
+                            Click="QuitButton_Click"/>
                 </Grid>
             </SplitView.Pane>
             <SplitView.Content>
                 <Frame Name="GameFrame" 
                        Grid.Row="1" 
                        VerticalAlignment="Stretch" 
-                       HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                       HorizontalAlignment="Stretch" 
                        Background="LightSteelBlue" 
                        Padding="0,0,0,0">   
                 </Frame>

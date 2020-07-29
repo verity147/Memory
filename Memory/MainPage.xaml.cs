@@ -24,14 +24,34 @@ namespace Memory
 
         public MainPage()
         {
-            game = new Game();
             this.InitializeComponent();
+            RestartGame();
+        }
+
+        public void RestartGame()
+        {
+            game = new Game();
             GameFrame.Navigate(typeof(Game));
-        }        
+        }
 
         private void Options_Click(object sender, RoutedEventArgs e)
         {
             SplitviewMenu.IsPaneOpen = !SplitviewMenu.IsPaneOpen;
+        }
+
+        private void RestartButton_Click(object sender, RoutedEventArgs e)
+        {
+            RestartGame();
+        }
+
+        private void QuitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
+
+        private void VolumeSlider_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            MusicPlayer.Volume = VolumeSlider.Value;
         }
     }
 }
