@@ -70,7 +70,6 @@ namespace Memory
             Button button = sender as Button;
             int clickedCardId = int.Parse(button.Name);
             card = CardList.Find(item => item.UniqueId == clickedCardId);
-            Debug.WriteLine(card.UniqueId);
 
             if (!card.Turned)
             {
@@ -110,7 +109,7 @@ namespace Memory
             }
             else
             {
-                await Task.Delay(2000);
+                await Task.Delay(1750);
                 for (int i = 0; i < buttons.Length; i++)
                 {
                     TurnCardBack(buttons[i], turnedCards[i]);

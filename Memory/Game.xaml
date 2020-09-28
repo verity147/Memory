@@ -13,8 +13,9 @@
                       x:DataType="data:Card">
             <Button Name="{x:Bind UniqueId}" 
                     Click="Card_Button"
-                    MinHeight="270" 
-                    MinWidth="200" AllowFocusWhenDisabled="False">
+                    MinHeight="180" 
+                    MinWidth="180" 
+                    AllowFocusWhenDisabled="False">
                 <StackPanel Name="StackPanel">
                     <Image Source="{x:Bind ImagePath}"
                             Style="{StaticResource Card}" 
@@ -28,21 +29,28 @@
         </DataTemplate>
     </Page.Resources>
 
-    <Grid Margin="64,32,64,0" HorizontalAlignment="Stretch" >
+    <Grid Margin="64,32,64,0" 
+          HorizontalAlignment="Stretch" 
+          Background="#FFFFFBF0" >
         <GridView Background="Gray" 
                 IsItemClickEnabled="True" 
                 ItemsSource="{x:Bind CardList}" 
                 ItemTemplate="{StaticResource ImageTemplate}"
                 SelectionMode="Single" 
                 HorizontalContentAlignment="Center"
-                VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="0,0,0,0" HorizontalAlignment="Stretch" >
+                VerticalAlignment="Top" 
+                Grid.ColumnSpan="3" 
+                Margin="0,0,0,0" 
+                HorizontalAlignment="Stretch" >
             <GridView.ItemContainerStyle>
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="5,5,5,5"/>
                 </Style>
             </GridView.ItemContainerStyle>
         </GridView>
-        <Image Name="LargeImage" Grid.ColumnSpan="3" Margin="0,0,0,0"/>
+        <Image Name="LargeImage" 
+               Grid.ColumnSpan="3" 
+               Margin="0,0,0,0"/>
     </Grid>
 </Page>
     
