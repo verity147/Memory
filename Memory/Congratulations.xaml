@@ -7,29 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <Grid HorizontalAlignment="Stretch">        
+    <Grid HorizontalAlignment="Stretch" 
+          Margin="80, 0, 0, 0" 
+          Background="#FFFFFBF0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Image Source="Assets/card12_l.png" 
                Stretch="Uniform" 
                HorizontalAlignment="Left"/>
         <StackPanel HorizontalAlignment="Center" 
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center" 
+                    Grid.Column="1">
             <TextBlock Text="Du hast gewonnen!" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center" 
-                       FontFamily="Arial" 
-                       FontSize="48" 
-                       Margin="0,0,0,20" FontWeight="Bold">
-                <TextBlock.Foreground>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="#FF51DC3C" Offset="1"/>
-                    </LinearGradientBrush>
-                </TextBlock.Foreground>
-            </TextBlock>
+                       FontFamily="Georgia" 
+                       FontSize="72" 
+                       Margin="0,0,0,40" FontWeight="Bold" Foreground="Black"/>
             <TextBlock Text="Möchtest du noch einmal spielen?" 
                        HorizontalAlignment="Center" 
+                       FontFamily="Georgia" 
                        VerticalAlignment="Center" 
-                       FontSize="24" Margin="0,0,0,20"/>
+                       FontSize="36" Margin="0,0,0,80"/>
             <Button Name="RestartButton" 
                     Click="RestartButton_Click"
                     Content="Neues Spiel" 

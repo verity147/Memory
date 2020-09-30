@@ -7,14 +7,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:Memory.Models"    
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#FFB7B7B7">
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" 
                       x:DataType="data:Card">
             <Button Name="{x:Bind UniqueId}" 
                     Click="Card_Button"
-                    MinHeight="180" 
-                    MinWidth="180" 
                     AllowFocusWhenDisabled="False">
                 <StackPanel Name="StackPanel">
                     <Image Source="{x:Bind ImagePath}"
@@ -31,8 +29,8 @@
 
     <Grid Margin="64,32,64,0" 
           HorizontalAlignment="Stretch" 
-          Background="#FFFFFBF0" >
-        <GridView Background="Gray" 
+          Background="#FFB7B7B7" >
+        <GridView Background="#FFB7B7B7" 
                 IsItemClickEnabled="True" 
                 ItemsSource="{x:Bind CardList}" 
                 ItemTemplate="{StaticResource ImageTemplate}"
@@ -43,6 +41,7 @@
                 Margin="0,0,0,0" 
                 HorizontalAlignment="Stretch" >
             <GridView.ItemContainerStyle>
+                
                 <Style TargetType="GridViewItem">
                     <Setter Property="Margin" Value="5,5,5,5"/>
                 </Style>
