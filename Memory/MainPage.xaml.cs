@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Memory.Models;
+using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,7 +32,7 @@ namespace Memory
         public void RestartGame()
         {
             game = new Game();
-            GameFrame.Navigate(typeof(Game));
+            GameFrame.Navigate(typeof(Game), null, new DrillInNavigationTransitionInfo());
         }
 
         private void Options_Click(object sender, RoutedEventArgs e)

@@ -7,13 +7,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:Memory.Models"    
     mc:Ignorable="d"
-    Background="#FFB7B7B7">
+    Background="#FFDDDDDD">
+        
     <Page.Resources>
         <DataTemplate x:Key="ImageTemplate" 
                       x:DataType="data:Card">
             <Button Name="{x:Bind UniqueId}" 
                     Click="Card_Button"
                     AllowFocusWhenDisabled="False">
+                <Button.Resources>
+                    <ResourceDictionary>
+                        <ResourceDictionary.ThemeDictionaries>
+                            <ResourceDictionary x:Key="Default">
+                                <SolidColorBrush Color="#FF903030" x:Key="ButtonBorderBrushPointerOver"/>
+                            </ResourceDictionary>
+                            <ResourceDictionary x:Key="Dark">
+                                <SolidColorBrush Color="#FF903030" x:Key="ButtonBorderBrushPointerOver"/>
+                            </ResourceDictionary>
+                        </ResourceDictionary.ThemeDictionaries>
+                    </ResourceDictionary>
+                </Button.Resources>
+
                 <StackPanel Name="StackPanel">
                     <Image Source="{x:Bind ImagePath}"
                             Style="{StaticResource Card}" 
@@ -26,11 +40,19 @@
             </Button>
         </DataTemplate>
     </Page.Resources>
-
+    <ScrollViewer VerticalScrollMode="Enabled" 
+                  VerticalScrollBarVisibility="Visible">        
+        <ScrollViewer.Resources>
+            <SolidColorBrush x:Key="ScrollBarThumbFill" Color="#FF5DAA4C"/>
+            <SolidColorBrush x:Key="ScrollBarThumbFillPointerOver" Color="#FF5DAA4C"/>
+            <SolidColorBrush x:Key="ScrollBarThumbFillPressed" Color="#FF509141"/>
+        </ScrollViewer.Resources>
+    
     <Grid Margin="64,32,64,0" 
           HorizontalAlignment="Stretch" 
-          Background="#FFB7B7B7" >
-        <GridView Background="#FFB7B7B7" 
+          Background="#00B7B7B7" 
+          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <GridView Background="#00B7B7B7" 
                 IsItemClickEnabled="True" 
                 ItemsSource="{x:Bind CardList}" 
                 ItemTemplate="{StaticResource ImageTemplate}"
@@ -39,7 +61,8 @@
                 VerticalAlignment="Top" 
                 Grid.ColumnSpan="3" 
                 Margin="0,0,0,0" 
-                HorizontalAlignment="Stretch" >
+                HorizontalAlignment="Stretch" 
+                ScrollViewer.VerticalScrollBarVisibility="Disabled" >
             <GridView.ItemContainerStyle>
                 
                 <Style TargetType="GridViewItem">
@@ -51,5 +74,5 @@
                Grid.ColumnSpan="3" 
                Margin="0,0,0,0"/>
     </Grid>
-</Page>
-    
+    </ScrollViewer>
+</Page>   
